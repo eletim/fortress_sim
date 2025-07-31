@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="default">
+    <!-- model://ELM4-Chassis をリソースパス上に置いてある前提 -->
+    <include>
+      <uri>model://ELM4-Chassis</uri>
+    </include>
+  </world>
+</sdf>
