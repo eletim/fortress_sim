@@ -747,7 +747,8 @@
       <right_joint>ELM4-Chassis/FrontRightHubMotorWheelJoint</right_joint>
       <wheel_separation>0.667</wheel_separation>
       <wheel_radius>0.108</wheel_radius>
-      <topic>cmd_vel</topic>
+      <odom_publish_frequency>50</odom_publish_frequency>
+      <topic>/cmd_vel</topic>
     </plugin>
   </model>
 </sdf>
