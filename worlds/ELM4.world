@@ -25,10 +25,12 @@
             </plane>
           </geometry>
           <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
+            <!-- 地面を淡い緑色にしたい例 -->
+            <ambient>0.2 0.6 0.2 1</ambient>
+            <diffuse>0.2 0.6 0.2 1</diffuse>
+            <!-- 必要ならスペキュラやエミッシブも追加可能 -->
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
           </material>
         </visual>
       </link>
