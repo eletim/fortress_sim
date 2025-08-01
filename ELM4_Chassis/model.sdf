@@ -1,9 +1,9 @@
 <sdf version='1.9'>
-  <model name='ELM4-Chassis'>
+  <model name='ELM4_Chassis'>
     <pose>0 0 .5 0 0 0</pose>
     <self_collide>false</self_collide>
     <static>false</static>
-    <link name="ELM4-Chassis/Base">
+    <link name="ELM4_Chassis/Base">
       <inertial>
         <mass>18.71</mass>
         <inertia>
@@ -17,7 +17,7 @@
       </inertial>
       <gravity>true</gravity>
       <velocity_decay/>
-      <collision name="ELM4-Chassis/Base_Collision">
+      <collision name="ELM4_Chassis/Base_Collision">
         <pose>0 0 .0875 0 0 0</pose>
         <geometry>
           <box>
@@ -33,7 +33,7 @@
           </contact>
         </surface>
       </collision>
-      <!-- <visual name="ELM4-Chassis/Base_Collision_Visual">
+      <!-- <visual name="ELM4_Chassis/Base_Collision_Visual">
         <pose>0 0 .0875 0 0 0</pose>
         <geometry>
           <box>
@@ -45,41 +45,41 @@
           <ambient>0 1 0 1</ambient>
         </material>
       </visual> -->
-      <visual name="ELM4-Chassis/BaseMetal">
+      <visual name="ELM4_Chassis/BaseMetal">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/BaseMetal.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/BaseMetal.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <visual name="ELM4-Chassis/BaseRubber">
+      <visual name="ELM4_Chassis/BaseRubber">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/BaseRubber.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/BaseRubber.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <visual name="ELM4-Chassis/BaseYellowPlasticTop">
+      <visual name="ELM4_Chassis/BaseYellowPlasticTop">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/BasePlastic.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/BasePlastic.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <visual name="ELM4-Chassis/BaseClearPlasticGuard">
+      <visual name="ELM4_Chassis/BaseClearPlasticGuard">
         <pose>0 0 0 0 0 0</pose>
         <cast_shadow>0</cast_shadow>
         <transparency>.5</transparency>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/BaseClear.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/BaseClear.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -87,9 +87,45 @@
           <ambient>0.6 0.6 0.7 1.0</ambient>
         </material>
       </visual>
+      <!-- 追加するカメラセンサ -->
+      <sensor name="camera_front" type="camera">
+        <!-- リンク原点からの相対位置と向き -->
+        <pose>0.3 0 0.5 0 0 0</pose>
+        <camera>
+          <!-- 水平視野角（ラジアン） -->
+          <horizontal_fov>1.047</horizontal_fov>
+          <!-- 画像サイズとフォーマット -->
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <!-- クリップ距離 -->
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <!-- 常時オン／更新レート／可視化設定 -->
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+      </sensor>
+      <!-- さらにもう一つリア用カメラを追加する例 -->
+      <sensor name="camera_rear" type="camera">
+        <pose>-0.3 0 0.5 0 0 3.14159</pose>
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image><width>640</width><height>480</height><format>R8G8B8</format></image>
+          <clip><near>0.1</near><far>100</far></clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+      </sensor>
     </link>
-    <link name="ELM4-Chassis/FrontLeftArm">
-      <pose relative_to="ELM4-Chassis/FrontLeftArmJoint">0 0 0 0 0 0</pose>
+    <link name="ELM4_Chassis/FrontLeftArm">
+      <pose relative_to="ELM4_Chassis/FrontLeftArmJoint">0 0 0 0 0 0</pose>
       <inertial>
         <mass>1.16</mass>
         <inertia>
@@ -103,25 +139,25 @@
       </inertial>
       <gravity>true</gravity>
       <velocity_decay/>
-      <visual name="ELM4-Chassis/FrontLeftArmMetal_Visual">
+      <visual name="ELM4_Chassis/FrontLeftArmMetal_Visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/ArmLeftMetal.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/ArmLeftMetal.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <visual name="ELM4-Chassis/FrontLeftArmPlastic_Visual">
+      <visual name="ELM4_Chassis/FrontLeftArmPlastic_Visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/ArmLeftPlastic.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/ArmLeftPlastic.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <!-- <visual name="ELM4-Chassis/FrontLeftArm_Collision_Visual">
+      <!-- <visual name="ELM4_Chassis/FrontLeftArm_Collision_Visual">
         <pose>0.055 0 -.0305 0 .505 0</pose>
         <geometry>
           <box>
@@ -133,7 +169,7 @@
           <ambient>0 0 1 1</ambient>
         </material>
       </visual> -->
-      <collision name="ELM4-Chassis/FrontLeftArm_Collision">
+      <collision name="ELM4_Chassis/FrontLeftArm_Collision">
         <pose>0.055 0 -.0305 0 .505 0</pose>
         <geometry>
           <box>
@@ -150,8 +186,8 @@
         </surface>
       </collision>
     </link>
-    <link name="ELM4-Chassis/FrontLeftHubMotorWheel">
-      <pose relative_to="ELM4-Chassis/FrontLeftHubMotorWheelJoint">0 0 0 0 0 0</pose>
+    <link name="ELM4_Chassis/FrontLeftHubMotorWheel">
+      <pose relative_to="ELM4_Chassis/FrontLeftHubMotorWheelJoint">0 0 0 0 0 0</pose>
       <inertial>
         <mass>3.854</mass>
         <inertia>
@@ -165,25 +201,25 @@
       </inertial>
       <gravity>true</gravity>
       <velocity_decay/>
-      <visual name="ELM4-Chassis/FrontLeftHubMotorWheelMetal_Visual">
+      <visual name="ELM4_Chassis/FrontLeftHubMotorWheelMetal_Visual">
         <pose>0 0 0 0 0 3.14159265359</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/HubMotor.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/HubMotor.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <visual name="ELM4-Chassis/FrontLeftHubMotorWheelRubber_Visual">
+      <visual name="ELM4_Chassis/FrontLeftHubMotorWheelRubber_Visual">
         <pose>0 0 0 0 0 3.14159265359</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/RubberWheel.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/RubberWheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <!-- <visual name="ELM4-Chassis/FrontLeftHubMotorWheel_Collision_Visual">
+      <!-- <visual name="ELM4_Chassis/FrontLeftHubMotorWheel_Collision_Visual">
         <pose>0 0 0 1.57079632679 0 0</pose>
         <geometry>
           <cylinder>
@@ -196,7 +232,7 @@
           <ambient>1 0 0 1</ambient>
         </material>
       </visual> -->
-      <collision name="ELM4-Chassis/FrontLeftHubMotorWheel_Collision">
+      <collision name="ELM4_Chassis/FrontLeftHubMotorWheel_Collision">
         <pose>0 0 0 1.57079632679 0 0</pose>
         <geometry>
           <cylinder>
@@ -221,10 +257,10 @@
         </surface>
       </collision>
     </link>
-    <joint name="ELM4-Chassis/FrontLeftArmJoint" type="revolute">
-      <parent>ELM4-Chassis/Base</parent>
-      <child>ELM4-Chassis/FrontLeftArm</child>
-      <pose relative_to="ELM4-Chassis/Base">.263 .238 .029 0 0 0</pose>
+    <joint name="ELM4_Chassis/FrontLeftArmJoint" type="revolute">
+      <parent>ELM4_Chassis/Base</parent>
+      <child>ELM4_Chassis/FrontLeftArm</child>
+      <pose relative_to="ELM4_Chassis/Base">.263 .238 .029 0 0 0</pose>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -238,10 +274,10 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
-    <joint name="ELM4-Chassis/FrontLeftHubMotorWheelJoint" type="revolute">
-      <parent>ELM4-Chassis/FrontLeftArm</parent>
-      <child>ELM4-Chassis/FrontLeftHubMotorWheel</child>
-      <pose relative_to="ELM4-Chassis/FrontLeftArm">.11861 .095 -.07453 0 0 0</pose>
+    <joint name="ELM4_Chassis/FrontLeftHubMotorWheelJoint" type="revolute">
+      <parent>ELM4_Chassis/FrontLeftArm</parent>
+      <child>ELM4_Chassis/FrontLeftHubMotorWheel</child>
+      <pose relative_to="ELM4_Chassis/FrontLeftArm">.11861 .095 -.07453 0 0 0</pose>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -251,8 +287,8 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
-        <link name="ELM4-Chassis/BackLeftArm">
-      <pose relative_to="ELM4-Chassis/BackLeftArmJoint">0 0 0 0 0 0</pose>
+        <link name="ELM4_Chassis/BackLeftArm">
+      <pose relative_to="ELM4_Chassis/BackLeftArmJoint">0 0 0 0 0 0</pose>
       <inertial>
         <mass>1.16</mass>
         <inertia>
@@ -266,25 +302,25 @@
       </inertial>
       <gravity>true</gravity>
       <velocity_decay/>
-      <visual name="ELM4-Chassis/BackLeftArmMetal_Visual">
+      <visual name="ELM4_Chassis/BackLeftArmMetal_Visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/ArmLeftMetal.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/ArmLeftMetal.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <visual name="ELM4-Chassis/BackLeftArmPlastic_Visual">
+      <visual name="ELM4_Chassis/BackLeftArmPlastic_Visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/ArmLeftPlastic.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/ArmLeftPlastic.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <!-- <visual name="ELM4-Chassis/BackLeftArm_Collision_Visual">
+      <!-- <visual name="ELM4_Chassis/BackLeftArm_Collision_Visual">
         <pose>0.055 0 -.0305 0 .505 0</pose>
         <geometry>
           <box>
@@ -296,7 +332,7 @@
           <ambient>0 0 1 1</ambient>
         </material>
       </visual> -->
-      <collision name="ELM4-Chassis/BackLeftArm_Collision">
+      <collision name="ELM4_Chassis/BackLeftArm_Collision">
         <pose>0.055 0 -.0305 0 .505 0</pose>
         <geometry>
           <box>
@@ -313,8 +349,8 @@
         </surface>
       </collision>
     </link>
-    <link name="ELM4-Chassis/BackLeftHubMotorWheel">
-      <pose relative_to="ELM4-Chassis/BackLeftHubMotorWheelJoint">0 0 0 0 0 0</pose>
+    <link name="ELM4_Chassis/BackLeftHubMotorWheel">
+      <pose relative_to="ELM4_Chassis/BackLeftHubMotorWheelJoint">0 0 0 0 0 0</pose>
       <inertial>
         <mass>3.854</mass>
         <inertia>
@@ -328,25 +364,25 @@
       </inertial>
       <gravity>true</gravity>
       <velocity_decay/>
-      <visual name="ELM4-Chassis/BackLeftHubMotorWheelMetal_Visual">
+      <visual name="ELM4_Chassis/BackLeftHubMotorWheelMetal_Visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/HubMotor.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/HubMotor.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <visual name="ELM4-Chassis/BackLeftHubMotorWheelRubber_Visual">
+      <visual name="ELM4_Chassis/BackLeftHubMotorWheelRubber_Visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/RubberWheel.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/RubberWheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <!-- <visual name="ELM4-Chassis/BackLeftHubMotorWheel_Collision_Visual">
+      <!-- <visual name="ELM4_Chassis/BackLeftHubMotorWheel_Collision_Visual">
         <pose>0 0 0 1.57079632679 0 0</pose>
         <geometry>
           <cylinder>
@@ -359,7 +395,7 @@
           <ambient>1 0 0 1</ambient>
         </material>
       </visual> -->
-      <collision name="ELM4-Chassis/BackLeftHubMotorWheel_Collision">
+      <collision name="ELM4_Chassis/BackLeftHubMotorWheel_Collision">
         <pose>0 0 0 1.57079632679 0 0</pose>
         <geometry>
           <cylinder>
@@ -384,10 +420,10 @@
         </surface>
       </collision>
     </link>
-    <joint name="ELM4-Chassis/BackLeftArmJoint" type="revolute">
-      <parent>ELM4-Chassis/Base</parent>
-      <child>ELM4-Chassis/BackLeftArm</child>
-      <pose relative_to="ELM4-Chassis/Base">-.263 -.238 .029 0 0 3.14159265359</pose>
+    <joint name="ELM4_Chassis/BackLeftArmJoint" type="revolute">
+      <parent>ELM4_Chassis/Base</parent>
+      <child>ELM4_Chassis/BackLeftArm</child>
+      <pose relative_to="ELM4_Chassis/Base">-.263 -.238 .029 0 0 3.14159265359</pose>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -401,10 +437,10 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
-    <joint name="ELM4-Chassis/BackLeftHubMotorWheelJoint" type="revolute">
-      <parent>ELM4-Chassis/BackLeftArm</parent>
-      <child>ELM4-Chassis/BackLeftHubMotorWheel</child>
-      <pose relative_to="ELM4-Chassis/BackLeftArm">.11861 .095 -.07453 0 0 3.14159265359</pose>
+    <joint name="ELM4_Chassis/BackLeftHubMotorWheelJoint" type="revolute">
+      <parent>ELM4_Chassis/BackLeftArm</parent>
+      <child>ELM4_Chassis/BackLeftHubMotorWheel</child>
+      <pose relative_to="ELM4_Chassis/BackLeftArm">.11861 .095 -.07453 0 0 3.14159265359</pose>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -414,8 +450,8 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
-    <link name="ELM4-Chassis/FrontRightArm">
-      <pose relative_to="ELM4-Chassis/FrontRightArmJoint">0 0 0 0 0 0</pose>
+    <link name="ELM4_Chassis/FrontRightArm">
+      <pose relative_to="ELM4_Chassis/FrontRightArmJoint">0 0 0 0 0 0</pose>
       <inertial>
         <mass>1.16</mass>
         <inertia>
@@ -429,25 +465,25 @@
       </inertial>
       <gravity>true</gravity>
       <velocity_decay/>
-      <visual name="ELM4-Chassis/FrontRightArmMetal_Visual">
+      <visual name="ELM4_Chassis/FrontRightArmMetal_Visual">
         <pose>0 0 0 0 -.017 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/ArmRightMetal.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/ArmRightMetal.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <visual name="ELM4-Chassis/FrontRightArmPlastic_Visual">
+      <visual name="ELM4_Chassis/FrontRightArmPlastic_Visual">
         <pose>0 0 0 0 -.017 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/ArmRightPlastic.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/ArmRightPlastic.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <!-- <visual name="ELM4-Chassis/FrontRightArm_Collision_Visual">
+      <!-- <visual name="ELM4_Chassis/FrontRightArm_Collision_Visual">
         <pose>0.055 0 -.0305 0 .505 0</pose>
         <geometry>
           <box>
@@ -459,7 +495,7 @@
           <ambient>0 0 1 1</ambient>
         </material>
       </visual> -->
-      <collision name="ELM4-Chassis/FrontRightArm_Collision">
+      <collision name="ELM4_Chassis/FrontRightArm_Collision">
         <pose>0.055 0 -.0305 0 .505 0</pose>
         <geometry>
           <box>
@@ -476,8 +512,8 @@
         </surface>
       </collision>
     </link>
-    <link name="ELM4-Chassis/FrontRightHubMotorWheel">
-      <pose relative_to="ELM4-Chassis/FrontRightHubMotorWheelJoint">0 0 0 0 0 0</pose>
+    <link name="ELM4_Chassis/FrontRightHubMotorWheel">
+      <pose relative_to="ELM4_Chassis/FrontRightHubMotorWheelJoint">0 0 0 0 0 0</pose>
       <inertial>
         <mass>3.854</mass>
         <inertia>
@@ -491,25 +527,25 @@
       </inertial>
       <gravity>true</gravity>
       <velocity_decay/>
-      <visual name="ELM4-Chassis/FrontRightHubMotorWheelMetal_Visual">
+      <visual name="ELM4_Chassis/FrontRightHubMotorWheelMetal_Visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/HubMotor.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/HubMotor.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <visual name="ELM4-Chassis/FrontRightHubMotorWheelRubber_Visual">
+      <visual name="ELM4_Chassis/FrontRightHubMotorWheelRubber_Visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/RubberWheel.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/RubberWheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <!-- <visual name="ELM4-Chassis/FrontRightHubMotorWheel_Collision_Visual">
+      <!-- <visual name="ELM4_Chassis/FrontRightHubMotorWheel_Collision_Visual">
         <pose>0 0 0 1.57079632679 0 0</pose>
         <geometry>
           <cylinder>
@@ -522,7 +558,7 @@
           <ambient>1 0 0 1</ambient>
         </material>
       </visual> -->
-      <collision name="ELM4-Chassis/FrontRightHubMotorWheel_Collision">
+      <collision name="ELM4_Chassis/FrontRightHubMotorWheel_Collision">
         <pose>0 0 0 1.57079632679 0 0</pose>
         <geometry>
           <cylinder>
@@ -547,10 +583,10 @@
         </surface>
       </collision>
     </link>
-    <joint name="ELM4-Chassis/FrontRightArmJoint" type="revolute">
-      <parent>ELM4-Chassis/Base</parent>
-      <child>ELM4-Chassis/FrontRightArm</child>
-      <pose relative_to="ELM4-Chassis/Base">.263 -.238 .029 0 0 0</pose>
+    <joint name="ELM4_Chassis/FrontRightArmJoint" type="revolute">
+      <parent>ELM4_Chassis/Base</parent>
+      <child>ELM4_Chassis/FrontRightArm</child>
+      <pose relative_to="ELM4_Chassis/Base">.263 -.238 .029 0 0 0</pose>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -564,10 +600,10 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
-    <joint name="ELM4-Chassis/FrontRightHubMotorWheelJoint" type="revolute">
-      <parent>ELM4-Chassis/FrontRightArm</parent>
-      <child>ELM4-Chassis/FrontRightHubMotorWheel</child>
-      <pose relative_to="ELM4-Chassis/FrontRightArm">.11861 -.095 -.07453 0 0 0</pose>
+    <joint name="ELM4_Chassis/FrontRightHubMotorWheelJoint" type="revolute">
+      <parent>ELM4_Chassis/FrontRightArm</parent>
+      <child>ELM4_Chassis/FrontRightHubMotorWheel</child>
+      <pose relative_to="ELM4_Chassis/FrontRightArm">.11861 -.095 -.07453 0 0 0</pose>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -577,8 +613,8 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
-        <link name="ELM4-Chassis/BackRightArm">
-      <pose relative_to="ELM4-Chassis/BackRightArmJoint">0 0 0 0 0 0</pose>
+        <link name="ELM4_Chassis/BackRightArm">
+      <pose relative_to="ELM4_Chassis/BackRightArmJoint">0 0 0 0 0 0</pose>
       <inertial>
         <mass>1.16</mass>
         <inertia>
@@ -592,25 +628,25 @@
       </inertial>
       <gravity>true</gravity>
       <velocity_decay/>
-      <visual name="ELM4-Chassis/BackRightArmMetal_Visual">
+      <visual name="ELM4_Chassis/BackRightArmMetal_Visual">
         <pose>0 0 0 0 -.017 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/ArmRightMetal.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/ArmRightMetal.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <visual name="ELM4-Chassis/BackRightArmPlastic_Visual">
+      <visual name="ELM4_Chassis/BackRightArmPlastic_Visual">
         <pose>0 0 0 0 -.017 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/ArmRightPlastic.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/ArmRightPlastic.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <!-- <visual name="ELM4-Chassis/BackRightArm_Collision_Visual">
+      <!-- <visual name="ELM4_Chassis/BackRightArm_Collision_Visual">
         <pose>0.055 0 -.0305 0 .505 0</pose>
         <geometry>
           <box>
@@ -622,7 +658,7 @@
           <ambient>0 0 1 1</ambient>
         </material>
       </visual> -->
-      <collision name="ELM4-Chassis/BackRightArm_Collision">
+      <collision name="ELM4_Chassis/BackRightArm_Collision">
         <pose>0.055 0 -.0305 0 .505 0</pose>
         <geometry>
           <box>
@@ -639,8 +675,8 @@
         </surface>
       </collision>
     </link>
-    <link name="ELM4-Chassis/BackRightHubMotorWheel">
-      <pose relative_to="ELM4-Chassis/BackRightHubMotorWheelJoint">0 0 0 0 0 0</pose>
+    <link name="ELM4_Chassis/BackRightHubMotorWheel">
+      <pose relative_to="ELM4_Chassis/BackRightHubMotorWheelJoint">0 0 0 0 0 0</pose>
       <inertial>
         <mass>3.854</mass>
         <inertia>
@@ -654,25 +690,25 @@
       </inertial>
       <gravity>true</gravity>
       <velocity_decay/>
-      <visual name="ELM4-Chassis/BackRightHubMotorWheelMetal_Visual">
+      <visual name="ELM4_Chassis/BackRightHubMotorWheelMetal_Visual">
         <pose>0 0 0 0 0 3.14159265359</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/HubMotor.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/HubMotor.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <visual name="ELM4-Chassis/BackRightHubMotorWheelRubber_Visual">
+      <visual name="ELM4_Chassis/BackRightHubMotorWheelRubber_Visual">
         <pose>0 0 0 0 0 3.14159265359</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://ELM4-Chassis/meshes/RubberWheel.dae</uri>
+            <uri>model://ELM4_Chassis/meshes/RubberWheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
-      <!-- <visual name="ELM4-Chassis/BackRightHubMotorWheel_Collision_Visual">
+      <!-- <visual name="ELM4_Chassis/BackRightHubMotorWheel_Collision_Visual">
         <pose>0 0 0 1.57079632679 0 0</pose>
         <geometry>
           <cylinder>
@@ -685,7 +721,7 @@
           <ambient>1 0 0 1</ambient>
         </material>
       </visual> -->
-      <collision name="ELM4-Chassis/BackRightHubMotorWheel_Collision">
+      <collision name="ELM4_Chassis/BackRightHubMotorWheel_Collision">
         <pose>0 0 0 1.57079632679 0 0</pose>
         <geometry>
           <cylinder>
@@ -710,10 +746,10 @@
         </surface>
       </collision>
     </link>
-    <joint name="ELM4-Chassis/BackRightArmJoint" type="revolute">
-      <parent>ELM4-Chassis/Base</parent>
-      <child>ELM4-Chassis/BackRightArm</child>
-      <pose relative_to="ELM4-Chassis/Base">-.263 .238 .029 0 0 3.14159265359</pose>
+    <joint name="ELM4_Chassis/BackRightArmJoint" type="revolute">
+      <parent>ELM4_Chassis/Base</parent>
+      <child>ELM4_Chassis/BackRightArm</child>
+      <pose relative_to="ELM4_Chassis/Base">-.263 .238 .029 0 0 3.14159265359</pose>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -727,10 +763,10 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
-    <joint name="ELM4-Chassis/BackRightHubMotorWheelJoint" type="revolute">
-      <parent>ELM4-Chassis/BackRightArm</parent>
-      <child>ELM4-Chassis/BackRightHubMotorWheel</child>
-      <pose relative_to="ELM4-Chassis/BackRightArm">.11861 -.095 -.07453 0 0 3.14159265359</pose>
+    <joint name="ELM4_Chassis/BackRightHubMotorWheelJoint" type="revolute">
+      <parent>ELM4_Chassis/BackRightArm</parent>
+      <child>ELM4_Chassis/BackRightHubMotorWheel</child>
+      <pose relative_to="ELM4_Chassis/BackRightArm">.11861 -.095 -.07453 0 0 3.14159265359</pose>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -741,10 +777,10 @@
       </axis>
     </joint>
     <plugin filename="libignition-gazebo-diff-drive-system.so" name="ignition::gazebo::systems::DiffDrive">
-      <right_joint>ELM4-Chassis/BackLeftHubMotorWheelJoint</right_joint>
-      <left_joint>ELM4-Chassis/FrontLeftHubMotorWheelJoint</left_joint>
-      <left_joint>ELM4-Chassis/BackRightHubMotorWheelJoint</left_joint>
-      <right_joint>ELM4-Chassis/FrontRightHubMotorWheelJoint</right_joint>
+      <right_joint>ELM4_Chassis/BackLeftHubMotorWheelJoint</right_joint>
+      <left_joint>ELM4_Chassis/FrontLeftHubMotorWheelJoint</left_joint>
+      <left_joint>ELM4_Chassis/BackRightHubMotorWheelJoint</left_joint>
+      <right_joint>ELM4_Chassis/FrontRightHubMotorWheelJoint</right_joint>
       <wheel_separation>0.667</wheel_separation>
       <wheel_radius>0.108</wheel_radius>
       <odom_publish_frequency>50</odom_publish_frequency>

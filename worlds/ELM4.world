@@ -1,6 +1,27 @@
 <?xml version="1.0" ?>
 <sdf version="1.9">
   <world name="default">
+    <!-- 物理演算システム -->
+    <plugin filename="ignition-gazebo-physics-system"
+            name="gz::sim::systems::Physics">
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </plugin>
+
+    <!-- シーン可視化（GUI連携用） -->
+    <plugin filename="ignition-gazebo-scene-broadcaster-system"
+            name="gz::sim::systems::SceneBroadcaster"/>
+
+    <!-- センサーシステム -->
+    <plugin filename="ignition-gazebo-sensors-system"
+            name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <!-- ユーザコマンド（モデルの動的生成・削除など） -->
+    <plugin filename="ignition-gazebo-user-commands-system"
+            name="gz::sim::systems::UserCommands"/>
+
     <!-- 自作の地面モデル -->
     <model name="my_ground_plane">
       <static>true</static>
@@ -36,9 +57,9 @@
       </link>
     </model>
 
-    <!-- model://ELM4-Chassis をリソースパス上に置いてある前提 -->
+    <!-- model://ELM4_Chassis をリソースパス上に置いてある前提 -->
     <include>
-      <uri>model://ELM4-Chassis</uri>
+      <uri>model://ELM4_Chassis</uri>
     </include>
   </world>
 </sdf>
