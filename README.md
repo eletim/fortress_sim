@@ -3,7 +3,7 @@
 
 https://app.gazebosim.org/fuel/models
 
-- ELM4-Chassis: https://app.gazebosim.org/BloodyUpwork/fuel/models/ELM4-Chassis
+- ELM4_Chassis: https://app.gazebosim.org/BloodyUpwork/fuel/models/ELM4-Chassis
 
 
 
@@ -11,6 +11,12 @@ https://app.gazebosim.org/fuel/models
 
 - ros2 humble
 - ignition gazebo fortress
+- ros-humble-ros-gz-image
+
+```sh
+sudo apt update
+sudo apt install ros-humble-ros-gz-image
+```
 
 動作確認
 ```sh
@@ -36,8 +42,7 @@ ign gazebo worlds/ELM4.world
 
 terminal 2:
 ```sh
- ros2 run ros_gz_bridge parameter_bridge \
-  /cmd_vel@geometry_msgs/msg/Twist@ignition.msgs.Twist
+ros2 launch launch/bridge.launch.py
 ```
 
 terminal 3:
@@ -45,3 +50,7 @@ terminal 3:
 ros2 run teleop_twist_keyboard teleop_twist_keyboard 
 ```
 
+ign topic確認
+```sh
+ign topic -l
+```
